@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serene - AI Mental Health Companion</title>
+    <script> window.chtlConfig = { chatbotId: "9133293368" } </script>
+    <script async data-id="9133293368" id="chatling-embed-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sentiment@5.0.0/sentiment.min.js" onerror="console.error('Failed to load sentiment.min.js')"></script>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=qQsjq0u8:394"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="#" class="logo">SereneAi<span></span></a>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#activities">Activities</a></li>
+                    <li><a href="#journal">Journal</a></li>
+                    <li><a href="#mood-tracker">Mood Tracker</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    
+    <section class="hero">
+        <div class="floating-circles" id="floatingCircles"></div>
+        <h1>Your AI Mental Health Companion</h1>
+        <p>A safe space for emotional support, mindfulness, and personal growth.</p>
+        <a href="#features" class="btn">Get Started</a>
+    </section>
+    
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">How We Help</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Emotional Support</h3>
+                    <p>Talk about your feelings in a safe, judgment-free environment with our empathetic AI companion.</p>
+                    <div class="chat-controls">
+                        <button class="btn" id="openChat">Chat with Serene</button>
+                        <input type="text" id="chatInput" placeholder="Type your message..." style="margin-top: 10px; padding: 8px; width: 100%; border-radius: 5px; border: 1px solid #ccc;" />
+                        <button class="btn" id="sendMessage" style="margin-top: 10px;">Send</button>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <h3>Mindfulness Activities</h3>
+                    <p>Engage in guided breathing exercises, meditation, and relaxation techniques to reduce stress.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Resource Connection</h3>
+                    <p>Access helpful resources and professional support when you need more assistance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="quote-section" id="quote-section">
+        <div class="container">
+            <div class="quote-box">
+                <p id="quote">"Your mental health is a priority. Your happiness is essential. Your self-care is a necessity."</p>
+                <p class="quote-author" id="author">- Unknown</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="activities" id="activities">
+        <div class="container">
+            <h2 class="section-title">Relaxation Activities</h2>
+            <div class="activity-tabs">
+                <button class="tab-button active" data-tab="breathing">Breathing</button>
+                <button class="tab-button" data-tab="drawing">Calm Drawing</button>
+                <button class="tab-button" data-tab="memory">Memory Game</button>
+            </div>
+            
+            <div class="tab-content active" id="breathing">
+                <div class="mindfulness-exercise">
+                    <h3>Guided Breathing Exercise</h3>
+                    <p>Follow the circle as it expands and contracts. Breathe in as it grows, and out as it shrinks.</p>
+                    <div>
+                        <label for="breathDuration">Breath Duration (seconds):</label>
+                        <input type="number" id="breathDuration" min="4" max="10" value="4" style="width: 60px; margin: 10px;">
+                    </div>
+                    <div class="breathing-container">
+                        <div class="circle-breath" id="breathCircle"></div>
+                        <div class="breathing-text" id="breathText">Breathe In</div>
+                    </div>
+                    <button class="btn" id="startBreathing">Start Exercise</button>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="drawing">
+                <div class="canvas-container">
+                    <h3>Express Yourself Through Art</h3>
+                    <p>Use this simple drawing tool to express your feelings or just relax with some creative doodling.</p>
+                    <div class="color-dots">
+                        <span class="color-dot" style="background-color: #7bb5b3;" data-color="#7bb5b3"></span>
+                        <span class="color-dot" style="background-color: #b6d7a8;" data-color="#b6d7a8"></span>
+                        <span class="color-dot" style="background-color: #9fc5e8;" data-color="#9fc5e8"></span>
+                        <span class="color-dot" style="background-color: #d5a6bd;" data-color="#d5a6bd"></span>
+                        <span class="color-dot" style="background-color: #545454;" data-color="#545454"></span>
+                    </div>
+                    <canvas id="canvas" width="600" height="400"></canvas>
+                    <button class="btn" id="saveDrawing" style="margin-top: 20px;">Save Drawing</button>
+                    <button class="btn" id="clearCanvas" style="margin-top: 20px;">Clear Canvas</button>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="memory">
+                <div class="memory-container">
+                    <h3>Memory Match Game</h3>
+                    <p>Challenge your brain and improve focus with this simple memory matching game.</p>
+                    <div class="memory-game" id="memoryGame"></div>
+                    <button class="btn" id="restartMemory" style="margin-top: 20px;">Restart Game</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="journal" id="journal">
+        <div class="container">
+            <h2 class="section-title">Your Journal</h2>
+            <p>Reflect on your conversations with Serene AI. Each entry summarizes your chat and captures your mood.</p>
+            <div class="journal-entries" id="journalEntries"></div>
+            <button class="btn" id="clearJournal" style="margin-top: 20px;">Clear Journal</button>
+        </div>
+    </section>
+
+    <section class="mood-tracker" id="mood-tracker">
+        <div class="container">
+            <h2 class="section-title">Mood Tracker</h2>
+            <p>Visualize your emotional journey over time based on your journal entries.</p>
+            <div class="mood-chart-container">
+                <canvas id="moodChart" height="200"></canvas>
+            </div>
+        </div>
+    </section>
+    
+    <section class="resources" id="resources">
+        <div class="container">
+            <h2 class="section-title">Helpful Resources</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Crisis Support</h3>
+                    <p>If you're in crisis, reach out to a helpline:</p>
+                    <div id="crisisLines"></div>
+                </div>
+                <div class="feature-card">
+                    <h3>Find a Therapist</h3>
+                    <p>Professional help is available:</p>
+                    <p><a href="https://www.psychologytoday.com/us/therapists" target="_blank">Psychology Today Directory</a></p>
+                    <p><a href="https://www.betterhelp.com/" target="_blank">Better Help Online Therapy</a></p>
+                </div>
+                <div class="feature-card">
+                    <h3>Self-Help Resources</h3>
+                    <p>Explore these apps and websites:</p>
+                    <p><a href="https://www.headspace.com/" target="_blank">Headspace - Guided meditation</a></p>
+                    <p><a href="https://www.calm.com/" target="_blank">Calm - Sleep and relaxation</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
